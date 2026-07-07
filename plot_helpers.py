@@ -19,7 +19,7 @@ def plot_fire_and_climate(burned_df, climate_df, output_path='fire_and_drivers_p
     la_nina = [2001, 2006, 2008, 2009, 2011, 2012, 2018, 2021, 2022, 2023, 2025]
 
     def add_enso(ax):
-            """Shade El Niño (red) and La Niña (blue) years, mark the 2016 Peace Agreement."""
+        """Shade El Niño (red) and La Niña (blue) years, mark the 2016 Peace Agreement."""
         for y in el_nino:
             ax.axvspan(y - 0.4, y + 0.4, alpha=0.10, color='red', zorder=0)
         for y in la_nina:
