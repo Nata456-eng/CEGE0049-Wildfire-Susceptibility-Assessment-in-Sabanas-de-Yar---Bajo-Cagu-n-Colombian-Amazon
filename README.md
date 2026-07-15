@@ -263,3 +263,13 @@ Threshold-dependent metrics (F1) are secondary because the product is a **suscep
 - ONI is spatially constant → aids temporal, not spatial, discrimination.
 - Stratification changes the base rate → outputs are relative susceptibility, presented in quintiles.
 - 2023–2024 have few fire events → temporal metric is dominated by 2020–2022.
+
+# 15 july 2026
+
+## Latest updates
+
+- Added a dedicated Random Forest training notebook for the modelling workflow.
+- Added a tuning notebook for GridSearch-based model selection with spatial-block cross-validation.
+- Compared Logistic Regression and Random Forest using the same frozen dataset and evaluation protocol.
+- Used 10 spatial folds for validation and reported PR-AUC on the temporal hold-out as the main comparison metric.
+- Kept the existing repository documentation intact and appended this update log for traceability.
