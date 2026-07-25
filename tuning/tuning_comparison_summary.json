@@ -1,0 +1,31 @@
+{
+  "versions_compared": [
+    "baseline_comparison",
+    "train_rf",
+    "train_xgboost",
+    "tune_rf",
+    "tune_v2",
+    "tune_v3",
+    "v4_comparison_buffer_7_15km",
+    "xgboost_v2"
+  ],
+  "n_model_version_rows": 17,
+  "headline_metric": "temporal PR-AUC (>=2020 hold-out)",
+  "ratio_pr_baselines": {
+    "1:1": 0.5,
+    "2:1": 0.333,
+    "3:1": 0.25
+  },
+  "key_transitions": {
+    "v1->v2": "leak fix (tune <=2019); ~unchanged (RF temporal PR-AUC .558->.569)",
+    "v2->v3": "2:1->1:1; RF spatial PR-AUC .779->.866 (partly baseline), temporal .569->.704 (real)",
+    "v3->v4": "3km->7-15km annulus + year-stratified; spatial drops (RF PR-AUC .866->.800), temporal holds (.704->.710), spatial-temporal gap ~.16->~.09"
+  },
+  "final_design": "v4: 7-15km annulus, ratio 1:1, per-year stratified pseudo-absences",
+  "final_temporal_pr_auc": {
+    "Logistic Regression": 0.739,
+    "Random Forest": 0.71,
+    "XGBoost": 0.709
+  },
+  "caveat": "v4 altered buffer AND stratification together; v3->v4 not attributable to buffer alone"
+}

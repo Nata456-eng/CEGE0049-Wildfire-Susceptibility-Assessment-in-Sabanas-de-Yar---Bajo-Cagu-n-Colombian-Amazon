@@ -8,11 +8,10 @@ tres subcarpetas con un significado claro.
 Archivos tal como se descargaron/recibieron, **antes** de cualquier limpieza:
 - `coca_cultivation.csv` + `coca_cultivation/` — datos de cultivos de coca (UNODC-SIMCI), shapefile limpio.
 - `national_natural_parks/` — shapefile de Parques Nacionales Naturales (RUNAP).
-- `roads/` — shapefile de la red vial (RedVial).
+- `roads/` — shapefile de la OMS.
 
 Estos archivos se usaron para crear los "assets" (capas) que viven en Google Earth Engine
-(proyecto `col-amazon-fire-susceptibility`). No los edites directamente: si necesitas
-volver a subir una capa a GEE, este es el punto de partida.
+(proyecto `col-amazon-fire-susceptibility`).  
 
 ## `processed/` — Datos procesados (tablas intermedias)
 Tablas ya calculadas a partir de Google Earth Engine, listas para graficar o analizar:

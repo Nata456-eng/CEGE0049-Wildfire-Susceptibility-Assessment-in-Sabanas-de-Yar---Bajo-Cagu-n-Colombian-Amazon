@@ -1,0 +1,4 @@
+model,clf__C,clf__penalty,max_depth,max_features,min_samples_leaf,n_estimators,learning_rate,subsample
+Logistic Regression,0.01,l2,,,,,,
+Random Forest,,,None,0.5,5,500,,
+XGBoost,,,6,,,300,0.05,1.0

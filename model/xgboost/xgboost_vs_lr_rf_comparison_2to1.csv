@@ -1,0 +1,4 @@
+ratio,model,n_rows,n_presences,auc_spatial_mean,prauc_spatial_mean,f1_spatial_mean,auc_temporal,prauc_temporal,f1_temporal,
+02:01,Logistic Regression,6231,2077,0.83,0.70,0.61,0.81,0.62,0.56,
+02:01,Random Forest,6231,2077,0.88,0.78,0.68,0.82,0.57,0.56,
+02:01,XGBoost,6231,2077,0.86,0.74,0.69,0.79,0.54,0.55,

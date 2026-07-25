@@ -1,0 +1,55 @@
+{
+  "version": "v4_buffer_7_15km",
+  "created": "2026-07-25 13:19:30",
+  "design": {
+    "ratio": "1:1",
+    "inner_buffer_m": 7000,
+    "outer_buffer_m": 15000,
+    "sampling_geometry": "annulus (ring) around same-year fire points",
+    "exclusion_criterion": "per-year",
+    "absence_draw": "global, unstratified (as in v3)",
+    "block_degrees": 0.25,
+    "n_spatial_folds": 5,
+    "seed": 42,
+    "train_years": "<= 2019",
+    "test_years": "2020-2024",
+    "tuning_metric": "average_precision (PR-AUC)"
+  },
+  "predictors": [
+    "dist_roads",
+    "dist_parks",
+    "dist_coca",
+    "dist_mosaic",
+    "temp_C",
+    "vpd_kPa",
+    "ndvi",
+    "wind_ms",
+    "oni"
+  ],
+  "dataset": {
+    "n_rows": 4154,
+    "n_presences": 2077,
+    "n_absences": 2077,
+    "n_blocks": 84,
+    "eligible_in_ring": 14928,
+    "max_year_share_gap": 0.0
+  },
+  "best_hyperparameters": {
+    "Logistic Regression": {
+      "clf__C": "0.01",
+      "clf__penalty": "l2"
+    },
+    "Random Forest": {
+      "max_depth": "None",
+      "max_features": "0.5",
+      "min_samples_leaf": "5",
+      "n_estimators": "500"
+    },
+    "XGBoost": {
+      "learning_rate": "0.05",
+      "max_depth": "6",
+      "n_estimators": "300",
+      "subsample": "1.0"
+    }
+  }
+}
