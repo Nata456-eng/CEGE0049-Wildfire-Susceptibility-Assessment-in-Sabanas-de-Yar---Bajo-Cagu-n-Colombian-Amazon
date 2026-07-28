@@ -4,3 +4,4 @@
 *.pyd
 *.egg-info/
 .ipynb_checkpoints/
+*.sr.lock
