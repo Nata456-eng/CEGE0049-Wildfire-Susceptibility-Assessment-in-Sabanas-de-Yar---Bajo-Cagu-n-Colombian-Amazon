@@ -1,0 +1,11 @@
+﻿Risk level,% of territory,% of total fire,Burn intensity (%)
+Very high,2.2,29.6,19.2
+High,9.7,15.9,2.4
+Moderate,17.6,22.3,1.8
+Low,26.2,18.5,1.0
+Very low,44.3,13.7,0.4
+
+# Total % of total fire (all classes): 100.0%
+# Out of every 100 hectares burned, 45.5 were in areas marked as high or very high risk, which occupy only 11.9% of the territory.
+# Fire was 43 times more intense in very-high-risk areas than in very-low-risk areas.
+# This validation compares the map against real fires observed independently (Landsat satellite, SINCHI historical data) that occurred between 2020 and 2024 -- years the model NEVER saw during training. It's a fair test: the model had to anticipate fire that hadn't happened yet when it was built.

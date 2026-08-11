@@ -1,88 +1,93 @@
 # Wildfire Susceptibility Assessment — Sabanas del Yarí–Bajo Caguán (Colombian Amazon)
 
-Proyecto de tesis (MSc Geospatial Sciences, UCL) que construye un mapa de
-**susceptibilidad espacial a incendios** para un núcleo de deforestación en la
-Amazonía colombiana, usando Google Earth Engine + Machine Learning.
+MSc Geospatial Sciences (UCL) thesis project that builds a **spatial wildfire
+susceptibility map** for a deforestation nucleus in the Colombian Amazon, using Google
+Earth Engine + Machine Learning.
 
-**¿Nunca has trabajado con Machine Learning?** Empieza por [`WORKFLOW.md`](WORKFLOW.md) —
-ahí se explica todo el flujo del proyecto en lenguaje simple: qué datos hay, cómo se
-entrenan los modelos, dónde ver los resultados y cómo interpretarlos.
+**New to Machine Learning?** Start with [`WORKFLOW.md`](WORKFLOW.md) — it explains the
+whole project flow in plain language: what data exists, how the models are trained,
+where to find the results, and how to interpret them.
 
-## Estructura del repositorio
+## Repository structure
 
+```text
+├── data/               # All data (raw, processed, and the ML dataset)
+│   ├── raw/            # Unprocessed source data (shapefiles, original CSVs)
+│   ├── processed/      # Intermediate tables computed from Earth Engine
+│   └── model_dataset/  # The "frozen" dataset every model reads from
+│
+├── eda/                # Exploratory Data Analysis (EDA) — understand before modelling
+│   ├── climatic/       # Fire vs. climate and ENSO
+│   ├── social/         # Fire vs. coca, roads, parks, land cover
+│   ├── nucleus_extraction/  # Study-area definition + fire quintile maps
+│   └── diagnosis.ipynb # Correlation, collinearity (VIF), spatial autocorrelation
+│
+├── model/              # Machine Learning models, one per folder
+│   ├── logistic_regression/  # Transparent baseline model
+│   ├── random_forest/        # First "real" ML model
+│   └── xgboost/               # Third model, gradient boosting
+│
+├── tuning/             # Hyperparameter search (versioned: v1 → v4)
+│   ├── v1/             # First GridSearchCV pass (LR + RF), final comparison table
+│   ├── v2/             # Same grids, temporal-leakage fix in the tuning CV
+│   ├── v3/             # Pseudo-absence ratio sensitivity analysis (1:1 wins)
+│   └── v4/             # 7–15 km annulus sampling, ratio 1:1, LR/RF/XGBoost — selects the final RF model
+│
+├── outputs/            # Everything generated: charts, maps, metrics, SHAP, the final map
+│   ├── figures/        # Charts (climate/, social/)
+│   ├── maps/           # Spatial maps (fire quintiles, latest-year snapshot)
+│   ├── diagnostics/    # Statistical diagnostic charts
+│   ├── metrics/        # Exported model metric tables
+│   ├── shap/           # Model interpretability (SHAP, permutation importance)
+│   └── probability_map/  # Final deployed model: pixel-level susceptibility map + ArcGIS-ready layers
+│
+├── utils/              # Compatibility shims that re-export the shared modules at repo root
+├── col_amazon_fire_utils.py  # Shared module: Earth Engine connection, nucleus geometry, extractors
+└── plot_helpers.py           # Shared plotting helpers
 ```
-├── data/               # Todos los datos (crudos, procesados, y el dataset de ML)
-│   ├── raw/            # Datos fuente sin procesar (shapefiles, CSV originales)
-│   ├── processed/      # Tablas intermedias calculadas desde Earth Engine
-│   └── model_dataset/  # El dataset "congelado" que usan todos los modelos
-│
-├── eda/                # Análisis exploratorio de datos (EDA) — entender antes de modelar
-│   ├── climatic/       # Fuego vs. clima y ENSO
-│   ├── social/         # Fuego vs. coca, caminos, parques, cobertura del suelo
-│   ├── nucleus_extraction/  # Definición del área de estudio + mapas de quintiles
-│   └── diagnosis.ipynb # Correlación, colinealidad (VIF), autocorrelación espacial
-│
-├── model/              # Modelos de Machine Learning, uno por carpeta
-│   ├── logistic_regression/  # Modelo base (baseline), transparente
-│   ├── random_forest/        # Primer modelo de ML "real"
-│   └── xgboost/              # Pendiente
-│
-├── tuning/             # Búsqueda de hiperparámetros (por versión: v1, v2, ...)
-│   └── v1/             # GridSearchCV para LR + RF, y la tabla comparativa final
-│
-├── outputs/            # Todo lo generado: gráficos, mapas, métricas, SHAP
-│   ├── figures/        # Gráficos (climate/, social/)
-│   ├── maps/           # Mapas espaciales
-│   ├── diagnostics/    # Gráficos de diagnóstico estadístico
-│   ├── metrics/        # (pendiente) tablas de métricas exportadas
-│   └── shap/           # (pendiente) interpretabilidad del modelo (SHAP)
-│
-├── utils/              # Compatibilidad: re-exportan los módulos compartidos de la raíz
-├── col_amazon_fire_utils.py  # Módulo compartido: conexión a Earth Engine, geometría del núcleo, extractores
-└── plot_helpers.py           # Funciones de graficado compartidas
-```
 
-Cada carpeta principal (`data/`, `eda/`, `model/`, `tuning/`, `outputs/`) tiene su
-propio `README.md` con más detalle.
+Every top-level folder (`data/`, `eda/`, `model/`, `tuning/`, `outputs/`) has its own
+`README.md` with more detail.
 
-## Cómo ejecutar los notebooks
+## How to run the notebooks
 
-1. Abre una terminal **en la raíz de este repositorio** y activa el entorno conda:
+1. Open a terminal **at the root of this repository** and activate the conda environment:
    ```powershell
    conda activate fire_thesis
    ```
-2. Instala las dependencias si hace falta (dentro del entorno `fire_thesis`):
+2. Install dependencies if needed (inside the `fire_thesis` environment):
    ```powershell
-   pip install pandas numpy matplotlib seaborn earthengine-api geemap geopandas shapely scikit-learn statsmodels scipy esda libpysal jenkspy contextily
+   pip install pandas numpy matplotlib seaborn earthengine-api geemap geopandas shapely scikit-learn statsmodels scipy esda libpysal jenkspy contextily requests rasterio geedim
    ```
-3. Autentica Google Earth Engine (una sola vez por máquina):
+3. Authenticate Google Earth Engine (once per machine):
    ```powershell
    earthengine authenticate
    ```
-4. Abre cualquier notebook en VS Code y ejecuta las celdas en orden, de arriba hacia
-   abajo. Cada notebook es un kernel independiente — si cierras y vuelves a abrir uno,
-   hay que volver a ejecutar todas sus celdas desde el principio.
+4. Open any notebook in VS Code and run its cells in order, top to bottom. Each notebook
+   is an independent kernel — if you close and reopen one, you need to re-run all of its
+   cells from the start.
 
-## Convención de rutas (importante)
+## Path convention (important)
 
-Cada notebook vive en una carpeta distinta y necesita "subir" un número diferente de
-niveles para llegar a la raíz del repo (donde están `col_amazon_fire_utils.py` y la
-carpeta `data/`). Por eso al inicio de cada notebook vas a ver algo como:
+Each notebook lives in a different folder and needs to go up a different number of
+levels to reach the repo root (where `col_amazon_fire_utils.py` and the `data/` folder
+live). That's why the first cell of every notebook has something like:
 
 ```python
 import os, sys
-sys.path.insert(0, os.path.abspath('../..'))   # sube 2 niveles hasta la raíz
+sys.path.insert(0, os.path.abspath('../..'))   # goes up 2 levels to the root
 ```
 
-El número de `..` depende de qué tan profundo esté el notebook (revisa el árbol de
-carpetas arriba). Si mueves un notebook de carpeta, **hay que actualizar este número**.
+The number of `..` depends on how deep the notebook sits (check the folder tree above).
+If you move a notebook to a different folder, **you must update this number** — and any
+hardcoded output paths in that same cell.
 
-## Notas y solución de problemas
+## Notes and troubleshooting
 
-- Si un notebook falla al importar `col_amazon_fire_utils`, revisa el `sys.path.insert`
-  de la primera celda — probablemente necesita más o menos `'..'` según su profundidad.
-- Las llamadas a Google Earth Engine pueden ser lentas; casi todos los notebooks
-  guardan resultados intermedios en `data/processed/` o `data/model_dataset/` para no
-  recalcular cada vez. Borra esos CSV solo si quieres forzar un recálculo completo.
-- El entorno `fire_thesis` necesita `earthengine-api`, `geemap` y `geopandas` para las
-  partes espaciales.
+- If a notebook fails to import `col_amazon_fire_utils`, check the `sys.path.insert` in
+  its first cell — it probably needs more or fewer `'..'` for its depth.
+- Google Earth Engine calls can be slow; most notebooks cache intermediate results in
+  `data/processed/` or `data/model_dataset/` so they don't recompute every run. Only
+  delete those CSVs if you want to force a full recalculation.
+- The `fire_thesis` environment needs `earthengine-api`, `geemap`, and `geopandas` for
+  the spatial parts.

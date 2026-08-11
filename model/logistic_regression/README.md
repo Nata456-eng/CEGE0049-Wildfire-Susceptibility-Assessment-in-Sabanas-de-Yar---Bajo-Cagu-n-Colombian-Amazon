@@ -112,7 +112,7 @@ Threshold-dependent metrics (F1) are secondary because the product is a **suscep
 
 ---
 
-## 9. Bitácora — chronological log of key decisions
+## 9. Log — chronological record of key decisions
 
 1. **Target = MODIS MCD64A1** burned area, dry-season Dec–Feb window.
 2. **Real predictors are distances, not raw layers** — RF/XGBoost are not spatially aware; distance encodes proximity/gradient.
@@ -148,3 +148,12 @@ Threshold-dependent metrics (F1) are secondary because the product is a **suscep
 The **tuned** version of this model (hyperparameters chosen via GridSearchCV) is evaluated
 in [`tuning/v1/tune_rf.ipynb`](../../tuning/v1/tune_rf.ipynb), together with the tuned
 Random Forest, in the same notebook so both use identical code paths.
+
+> **Note:** this baseline uses the frozen 2:1 dataset above. A later sensitivity
+> analysis ([`tuning/v3/`](../../tuning/v3/README.md)) found the 1:1 ratio performs
+> substantially better, and the final deployed model
+> ([`tuning/v4/`](../../tuning/v4/README.md),
+> [`outputs/probability_map/`](../../outputs/probability_map/README.md)) uses a
+> different, 1:1 ring-sampled (7–15 km) dataset. This README documents the original
+> baseline exactly as it was built and evaluated — don't mistake its 2:1 dataset for the
+> one behind the final map.

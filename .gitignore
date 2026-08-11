@@ -5,3 +5,15 @@
 *.egg-info/
 .ipynb_checkpoints/
 *.sr.lock
+carbon_estimation/raw_tiles_cache/
+carbon_estimation/agb_density_mg_ha_2000_30m.tif
+carbon_estimation/carbon_density_mg_c_ha_2000_30m.tif
+carbon_estimation/carbon_density_existing_forest_2024_30m.tif
+carbon_estimation/resampled_ArcGIS_30m/carbon_density_existing_forest_2024_30m_UTM.tif
+carbon_estimation/resampled_ArcGIS_30m/carbon_stock_per_pixel_2024_30m_UTM.tif
+carbon_estimation/resampled_ArcGIS_30m/_old/
+carbon_estimation/**/*.tif.ovr
+carbon_estimation/**/*.tif.aux.xml
+outputs/probability_map/smoothing/fire_susceptibility_smoothed_30m_UTM.tif
+outputs/probability_map/smoothing/fire_susceptibility_smoothed_30m_UTM.tif.aux.xml
+outputs/probability_map/smoothing/fire_susceptibility_smoothed_30m_UTM.tif.ovr

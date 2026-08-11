@@ -1,47 +1,58 @@
-# `model/` — Modelos de Machine Learning
+# `model/` — Machine Learning models
 
-Aquí vive **un modelo por carpeta**. Los tres deben leer exactamente el mismo dataset
-([`data/model_dataset/model_dataset.csv`](../data/model_dataset/model_dataset.csv)) y
-evaluarse con las mismas métricas, para que la comparación entre ellos sea justa.
+Each model lives in **its own folder**. All three read exactly the same dataset
+([`data/model_dataset/model_dataset.csv`](../data/model_dataset/model_dataset.csv)) and
+are evaluated with the same metrics, so the comparison between them is fair.
 
-## ¿Por qué comparar varios modelos?
-Es una pregunta metodológica clásica: *¿por qué usar Machine Learning "caja negra" en
-vez de un modelo simple y transparente?* La respuesta: se empieza con el modelo más
-simple posible (regresión logística) como **línea base**, y solo se justifica usar un
-modelo más complejo (Random Forest, XGBoost) si realmente mejora el desempeño con los
-MISMOS datos y la MISMA validación.
+## Why compare several models?
 
-## Subcarpetas
+This is a classic methodological question: *why use a "black box" Machine Learning
+model instead of something simple and transparent?* The answer: start with the simplest
+possible model (logistic regression) as a **baseline**, and only justify using a more
+complex model (Random Forest, XGBoost) if it actually improves performance on the SAME
+data with the SAME validation.
 
-### `logistic_regression/` — el modelo base (baseline)
-- [`baseline_comparison.ipynb`](logistic_regression/baseline_comparison.ipynb): este notebook hace DOS cosas en orden:
-  1. **Construye** el dataset congelado (`data/model_dataset/model_dataset.csv`) desde
-     Google Earth Engine — esto solo se ejecuta una vez; si el archivo ya existe, se
-     carga directamente y se salta el paso lento.
-  2. **Entrena y evalúa** una Regresión Logística simple sobre ese dataset.
-- Ver [README_logistic_regression.md](logistic_regression/README.md) para el detalle completo.
+## Subfolders
 
-### `random_forest/` — el primer modelo de "verdadero" ML
-- [`train_rf.ipynb`](random_forest/train_rf.ipynb): entrena un Random Forest con
-  hiperparámetros razonables (no los "mejores" — eso se hace en [`tuning/`](../tuning/)).
-- Ver [README.md](random_forest/README.md).
+### `logistic_regression/` — the baseline model
+- [`baseline_comparison.ipynb`](logistic_regression/baseline_comparison.ipynb): this
+  notebook does TWO things in order:
+  1. **Builds** the frozen dataset (`data/model_dataset/model_dataset.csv`) from Google
+     Earth Engine — this only runs once; if the file already exists it's loaded directly
+     and the slow step is skipped.
+  2. **Trains and evaluates** a simple logistic regression on that dataset.
+- See [`logistic_regression/README.md`](logistic_regression/README.md) for full detail.
 
-### `xgboost/` — PENDIENTE
-Tercer modelo a implementar, siguiendo el mismo protocolo (mismos 9 predictores, misma
-validación espacial y temporal). Ver [README.md](xgboost/README.md).
+### `random_forest/` — the first "real" ML model
+- [`train_rf.ipynb`](random_forest/train_rf.ipynb): trains a Random Forest with
+  reasonable hyperparameters (not the "best" ones — that happens in
+  [`tuning/`](../tuning/)).
+- See [`random_forest/README.md`](random_forest/README.md).
 
-## Métricas que vas a ver en todos los notebooks
-- **AUC-ROC**: qué tan bien el modelo distingue pixeles quemados de no-quemados (0.5 =
-  azar, 1.0 = perfecto). Métrica principal.
-- **PR-AUC** (Precision-Recall AUC): como el AUC-ROC pero más estricta cuando el evento
-  (incendio) es raro — aquí es la métrica MÁS importante porque solo 2.5% de los
-  pixeles-año se queman.
-- **F1**: balance entre precisión y sensibilidad, depende de un umbral (0.5 por
-  defecto) — se reporta pero es secundaria.
-- **Spatial block CV**: el modelo se valida dividiendo el mapa en bloques (~27 km) para
-  medir qué tan bien generaliza a LUGARES nuevos.
-- **Temporal split**: se entrena con años ≤2019 y se prueba en años ≥2020, para medir
-  qué tan bien generaliza a AÑOS nuevos.
+### `xgboost/` — the third model, gradient boosting
+- [`train_xgboost.ipynb`](xgboost/train_xgboost.ipynb) and
+  [`xgboost_v2.ipynb`](xgboost/xgboost_v2.ipynb): trains XGBoost following the same
+  protocol (same 9 predictors, same spatial and temporal validation) at pseudo-absence
+  ratios 1:1 and 2:1 respectively, and compares it against the already-tuned LR and RF.
+- See [`xgboost/README.md`](xgboost/README.md).
 
-Los resultados finales están resumidos en [`tuning/v1/`](../tuning/v1/README.md),
-donde se comparan los modelos ya afinados (tuned).
+A later, separate round in [`tuning/v4/`](../tuning/v4/README.md) reruns all three
+models together (LR, RF, XGBoost) on a new 7–15 km ring-sampled dataset and selects the
+final deployed model.
+
+## Metrics you'll see in every notebook
+- **AUC-ROC**: how well the model distinguishes burned from non-burned pixels (0.5 =
+  random, 1.0 = perfect). Primary metric.
+- **PR-AUC** (Precision-Recall AUC): like AUC-ROC but stricter when the event (fire) is
+  rare — here it's the MOST important metric because only 2.5% of pixel-years burn (in
+  the unbalanced raw data).
+- **F1**: balance between precision and recall, depends on a threshold (0.5 by default)
+  — reported but secondary.
+- **Spatial block CV**: the model is validated by splitting the map into blocks (~27 km)
+  to measure how well it generalises to NEW places.
+- **Temporal split**: trained on years ≤2019 and tested on years ≥2020, to measure how
+  well it generalises to NEW years.
+
+Final results are summarised in [`tuning/v1/`](../tuning/v1/README.md) (first tuned LR
+vs. RF comparison) and [`tuning/v4/`](../tuning/v4/README.md) (final three-model
+comparison that selected Random Forest).

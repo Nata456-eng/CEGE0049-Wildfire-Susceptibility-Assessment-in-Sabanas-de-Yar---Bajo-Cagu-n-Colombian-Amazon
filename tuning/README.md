@@ -1,16 +1,17 @@
-# `tuning/` — Búsqueda de hiperparámetros
+# `tuning/` — Hyperparameter search
 
-Cada subcarpeta (`v1/`, `v2/`, ...) es una ronda de afinación de hiperparámetros con
-`GridSearchCV`. Se numeran por versión (en vez de sobrescribir) para conservar el
-historial de qué se probó y con qué resultado — útil para la tesis y para el defense.
+Each subfolder (`v1/`, `v2/`, ...) is one round of hyperparameter tuning with
+`GridSearchCV`/`RandomizedSearchCV`. Rounds are numbered (rather than overwritten) to
+keep a history of what was tried and what it produced — useful for the thesis and for
+the defence.
 
-| Versión | Qué se afinó | Resultado |
+| Version | What was tuned | Result |
 |---|---|---|
-| [`v1/`](v1/) | Logistic Regression + Random Forest | Ver [`v1/README.md`](v1/README.md) — tabla comparativa final de ambos modelos afinados. |
-| [`v2/`](v2/) | Logistic Regression + Random Forest, con la corrección de fuga temporal (`GridSearchCV` solo ve `year<=2019`) | Ver [`v2/README.md`](v2/README.md) — misma grilla que v1, pero con tuning correctamente aislado del hold-out `>=2020`. |
-| [`v3/`](v3/) | Análisis de sensibilidad del ratio de pseudo-ausencias (1:1, 2:1, 3:1), con el mismo pipeline de v2 | Ver [`v3/README.md`](v3/README.md) — el ratio 1:1 supera claramente a 2:1 (usado hasta v2) y a 3:1. |
-| [`v4/`](v4/) | Grilla ampliada de Random Forest (20 combinaciones `n_estimators`×`max_depth`) sobre el ratio 2:1, seleccionando por F1 temporal | Ver [`v4/README.md`](v4/README.md) — el tuning amplio mejora poco el desempeño temporal de 2:1; sigue muy por debajo del ratio 1:1 de v3. |
+| [`v1/`](v1/) | Logistic Regression + Random Forest | See [`v1/README.md`](v1/README.md) — final comparison table for both tuned models. |
+| [`v2/`](v2/) | Logistic Regression + Random Forest, with the temporal-leakage fix (`GridSearchCV` only sees `year<=2019`) | See [`v2/README.md`](v2/README.md) — same grid as v1, but with tuning correctly isolated from the `>=2020` hold-out. |
+| [`v3/`](v3/) | Pseudo-absence ratio sensitivity analysis (1:1, 2:1, 3:1), same pipeline as v2 | See [`v3/README.md`](v3/README.md) — ratio 1:1 clearly beats 2:1 (used through v2) and 3:1. |
+| [`v4/`](v4/) | Logistic Regression + Random Forest + XGBoost, rebuilt with a 7–15 km annulus pseudo-absence sampling (a stronger fix for spatial autocorrelation than the 3 km buffer used in v1–v3), ratio 1:1 | See [`v4/README.md`](v4/README.md) — **Random Forest selected as the final model**, later interpreted with SHAP and deployed as the study-nucleus susceptibility map. |
 
-Cuando se afine XGBoost (pendiente), su búsqueda de hiperparámetros debería ir en una
-nueva carpeta `v5/` siguiendo el mismo patrón: notebook + `README.md` con la grilla
-usada, los mejores parámetros encontrados, y la interpretación de los resultados.
+Now that XGBoost is tuned (in `v4/`), any future round should follow the same pattern:
+notebook + `README.md` documenting the grid used, the best parameters found, and the
+interpretation of the results.

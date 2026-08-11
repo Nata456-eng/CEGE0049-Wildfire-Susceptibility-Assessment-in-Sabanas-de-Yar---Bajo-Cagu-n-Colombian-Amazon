@@ -76,7 +76,7 @@ def plot_fire_and_climate(burned_df, climate_df, output_path='fire_and_drivers_p
     )
 
     fig.suptitle(
-        'Fire and dry-season (Dec–Feb) drivers — Sabanas del Yarí–Bajo Caguán núcleo, 2001–2025\n'
+        'Fire and dry-season (Dec–Feb) drivers — Sabanas del Yarí–Bajo Caguán nucleus, 2001–2025\n'
         'MODIS MCD64A1 burned area · ERA5-Land climate · MODIS NDVI',
         fontsize=14, fontweight='bold', y=1.02
     )

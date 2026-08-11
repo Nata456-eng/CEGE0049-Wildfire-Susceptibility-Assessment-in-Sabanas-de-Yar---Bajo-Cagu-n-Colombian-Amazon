@@ -2,37 +2,37 @@
 
 **Notebook:** [`tune_rf.ipynb`](tune_rf.ipynb)
 
-## Qué es esta carpeta
-Aquí vive la búsqueda de **hiperparámetros** (los "ajustes" internos de un modelo, como
-cuántos árboles tiene un Random Forest o cuánta regularización usa la regresión
-logística). Cada intento de afinación es una versión nueva (`v1`, `v2`, ...) para no
-perder el historial de qué se probó y qué resultado dio.
+## What this folder is
+This is where the **hyperparameter** search lives (a model's internal "settings", like
+how many trees a Random Forest has or how much regularisation logistic regression uses).
+Each tuning attempt is a new version (`v1`, `v2`, ...) so the history of what was tried
+and what it produced isn't lost.
 
-`v1` es la primera (y hasta ahora única) ronda de afinación. Usa `GridSearchCV` con
-validación cruzada por bloques espaciales (10 folds) para elegir los mejores
-hiperparámetros de **ambos** modelos (Logistic Regression y Random Forest), y luego
-evalúa las dos versiones afinadas con el mismo protocolo de siempre (spatial block CV +
-temporal split). Por eso este notebook también contiene **la tabla comparativa final**
-de los dos modelos.
+`v1` is the first (and so far only, at this point) tuning round. It uses `GridSearchCV`
+with spatial-block cross-validation (10 folds) to choose the best hyperparameters for
+**both** models (Logistic Regression and Random Forest), then evaluates both tuned
+versions with the usual protocol (spatial block CV + temporal split). That's why this
+notebook also contains **the final comparison table** for the two models.
 
-## ¿Por qué un `GridSearchCV`?
-Es una búsqueda exhaustiva: se prueban todas las combinaciones de una lista de valores
-candidatos (ej. `n_estimators = [100, 300, 500]`) y se elige la combinación con mejor
-`PR-AUC` promedio en validación cruzada. Nunca se usa el conjunto de prueba temporal
-(≥2020) durante esta búsqueda — ese conjunto queda "intacto" para el reporte final, así
-no hay fuga de información (*data leakage*).
+## Why `GridSearchCV`?
+It's an exhaustive search: every combination of a list of candidate values is tried
+(e.g. `n_estimators = [100, 300, 500]`) and the combination with the best average
+`PR-AUC` in cross-validation is chosen. The temporal test set (≥2020) is never used
+during this search — that set stays "untouched" for the final report, so there's no
+information leakage (*data leakage*).
 
-**Detalle técnico importante:** con `GroupKFold` hay que pasar el objeto de
-validación cruzada y los grupos así:
+**Important technical detail:** with `GroupKFold`, the CV object and the groups must be
+passed like this:
 ```python
 GridSearchCV(estimator, param_grid, cv=GroupKFold(n_splits=10), scoring='average_precision')
-grid.fit(X, y, groups=g_tune)   # groups va en .fit(), no en cv=
+grid.fit(X, y, groups=g_tune)   # groups goes in .fit(), not in cv=
 ```
-Pasar `cv=gkf.split(...)` (el generador) en vez del objeto rompe con `PicklingError`.
+Passing `cv=gkf.split(...)` (the generator) instead of the object breaks with a
+`PicklingError`.
 
-## Grillas de búsqueda usadas
+## Search grids used
 
-| Modelo | Hiperparámetro | Valores candidatos |
+| Model | Hyperparameter | Candidate values |
 |---|---|---|
 | Logistic Regression | `C` | `0.01, 0.1, 1.0, 10.0` |
 | | `penalty` | `l1, l2` |
@@ -42,55 +42,53 @@ Pasar `cv=gkf.split(...)` (el generador) en vez del objeto rompe con `PicklingEr
 | | `min_samples_leaf` | `3, 5, 10, 20` |
 | | `max_depth` | `None, 10, 20` |
 
-- LR: 4×2×1 = **8 candidatos** × 10 folds = **80 fits**.
-- RF: 3×2×4×3 = **72 candidatos** × 10 folds = **720 fits** (9 folds entrenan / 1 valida por fit).
-- Métrica de selección: **PR-AUC** (`scoring='average_precision'`) promediada entre los 10 folds por candidato; gana el candidato con mejor PR-AUC promedio.
+- LR: 4×2×1 = **8 candidates** × 10 folds = **80 fits**.
+- RF: 3×2×4×3 = **72 candidates** × 10 folds = **720 fits** (9 folds train / 1 validates per fit).
+- Selection metric: **PR-AUC** (`scoring='average_precision'`) averaged across the 10 folds per candidate; the candidate with the best average PR-AUC wins.
 
-## Mejores hiperparámetros encontrados
+## Best hyperparameters found
 
-| Modelo | Hiperparámetros |
+| Model | Hyperparameters |
 |---|---|
 | Logistic Regression | `C=0.1`, `penalty='l1'`, `solver='liblinear'` |
 | Random Forest | `n_estimators=500`, `max_features=0.5`, `min_samples_leaf=3`, `max_depth=None` |
 
-## Resultados finales (modelos afinados)
+## Final results (tuned models)
 
-| Modelo | AUC (espacial) | PR-AUC (espacial) | AUC (temporal) | PR-AUC (temporal) |
+| Model | AUC (spatial) | PR-AUC (spatial) | AUC (temporal) | PR-AUC (temporal) |
 |---|---|---|---|---|
 | Logistic Regression (tuned) | 0.835 ± 0.060 | 0.705 ± 0.102 | 0.807 | 0.618 |
 | Random Forest (tuned) | 0.877 ± 0.040 | 0.783 ± 0.066 | 0.816 | 0.558 |
 
-**Interpretación (explicada simple):**
-- Random Forest gana en la validación **espacial** (mejor prediciendo lugares nuevos) y
-  es más estable (menor desviación estándar entre bloques).
-- En la validación **temporal** ambos modelos quedan prácticamente empatados — el fuego
-  entre años no está fuertemente determinado por estas variables, lo cual es
-  consistente con que ENSO (`oni`) tenga una correlación débil con el fuego.
+**Interpretation (in simple terms):**
+- Random Forest wins on **spatial** validation (better at predicting new places) and is
+  more stable (lower standard deviation across blocks).
+- On **temporal** validation both models are essentially tied — fire between years isn't
+  strongly determined by these variables, consistent with ENSO (`oni`) having a weak
+  correlation with fire.
 
-**Hallazgo central:** la regularización L1 de la regresión logística afinada puso el
-coeficiente de **`oni`** (el índice ENSO) en **exactamente cero** — el modelo lineal no
-encontró ninguna relación monótona (creciente o decreciente) entre ENSO y el fuego que
-valiera la pena conservar. Sin embargo, en el Random Forest, `oni` NO queda al final:
-queda en la mitad de la tabla de importancia (rango 6 de 9), por encima de `dist_roads`,
-`dist_coca` y `dist_mosaic`. Esto sugiere que la relación entre ENSO y el fuego es real
-pero **no lineal** — por ejemplo, tanto los eventos El Niño como La Niña extremos
-podrían aumentar el riesgo, algo que un coeficiente lineal simplemente no puede
-capturar, pero que un árbol de decisión sí (porque puede partir el rango de `oni` en
-varios segmentos independientes).
+**Central finding:** the tuned logistic regression's L1 regularisation set the
+coefficient of **`oni`** (the ENSO index) to **exactly zero** — the linear model found no
+monotonic (increasing or decreasing) relationship between ENSO and fire worth keeping.
+In the Random Forest, however, `oni` does NOT end up last: it sits in the middle of the
+importance table (rank 6 of 9), above `dist_roads`, `dist_coca`, and `dist_mosaic`. This
+suggests the relationship between ENSO and fire is real but **non-linear** — for
+example, both extreme El Niño and La Niña events could increase risk, something a linear
+coefficient simply can't capture but a decision tree can (because it can split the `oni`
+range into several independent segments).
 
-Por separado, `dist_mosaic` sí conserva un coeficiente pequeño pero distinto de cero en
-la LR (`-0.110`), y sigue siendo la variable **menos importante** en el Random Forest
-(última en impureza, 0.034). Esto ya no respalda la hipótesis original de que L1 la
-"apagaba" — más bien parece que su información se solapa con otras variables humanas
-correlacionadas (`dist_roads`, `dist_coca`), y el árbol prefiere dividir usando esas
-otras variables primero. La interpretación con SHAP (pendiente, ver
-[`outputs/shap/README.md`](../../outputs/shap/README.md)) debería enfocarse en **`oni`**
-como el caso más claro de relación no lineal, sin descartar `dist_mosaic`.
+Separately, `dist_mosaic` does keep a small but non-zero coefficient in the LR
+(`-0.110`), and remains the **least important** variable in the Random Forest (last by
+impurity, 0.034). This no longer supports the original hypothesis that L1 was
+"switching it off" — it looks more like its information overlaps with other correlated
+human-pressure variables (`dist_roads`, `dist_coca`), and the tree prefers splitting on
+those first. The SHAP interpretation (see
+[`outputs/shap/README.md`](../../outputs/shap/README.md)) should focus on **`oni`** as
+the clearest case of a non-linear relationship, without ruling out `dist_mosaic`.
 
-## Nota sobre fuga de información (leakage)
-Los hiperparámetros se eligieron con los mismos bloques espaciales usados para reportar
-el desempeño espacial → el número espacial es ligeramente optimista. El desempeño
-**temporal** (≥2020) nunca se usó durante la afinación, así que es la estimación no
-sesgada. Se comprobó que el efecto de la afinación es pequeño (PR-AUC espacial
-+0.012–0.015, temporal ±0.003) — hacer una validación anidada (nested CV) eliminaría
-este sesgo por completo pero cuesta ~10 veces más cómputo por una ganancia mínima.
+## Note on information leakage
+The hyperparameters were chosen using the same spatial blocks used to report spatial
+performance → the spatial number is slightly optimistic. **Temporal** performance
+(≥2020) was never used during tuning, so it's the unbiased estimate. The effect of
+tuning was checked to be small (spatial PR-AUC +0.012–0.015, temporal ±0.003) — a nested
+CV would remove this bias entirely but costs ~10× more compute for a minimal gain.

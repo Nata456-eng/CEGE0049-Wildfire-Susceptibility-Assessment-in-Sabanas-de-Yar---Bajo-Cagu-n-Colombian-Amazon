@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?><MD_Metadata xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:xalan="http://xml.apache.org/xalan" xmlns:srv="http://www.isotc211.org/2005/srv" xmlns:gmx="http://www.isotc211.org/2005/gmx" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:gml="http://www.opengis.net/gml" xmlns="http://www.isotc211.org/2005/gmd">
+    <fileIdentifier>
+        <gco:CharacterString>1742d666-50c8-4573-823e-5c5189ac0bbd</gco:CharacterString>
+    </fileIdentifier>
+    <characterSet>
+        <MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</MD_CharacterSetCode>
+    </characterSet>
+    <hierarchyLevel>
+        <MD_ScopeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_ScopeCode" codeListValue="dataset" codeSpace="ISOTC211/19115">dataset</MD_ScopeCode>
+    </hierarchyLevel>
+    <hierarchyLevelName>
+        <gco:CharacterString>dataset</gco:CharacterString>
+    </hierarchyLevelName>
+    <contact>
+        <CI_ResponsibleParty>
+            <individualName>
+                <gco:CharacterString>Modelos de Funcionamiento y Sostenibilidad del Laboratorio SIG y SR.</gco:CharacterString>
+            </individualName>
+            <organisationName>
+                <gco:CharacterString>Instituto Amazónico de Investigaciones Científicas - Sinchi</gco:CharacterString>
+            </organisationName>
+            <positionName>
+                <gco:CharacterString>Coordinador programa de investigación modelos de funcionamiento</gco:CharacterString>
+            </positionName>
+            <contactInfo>
+                <CI_Contact>
+                    <phone>
+                        <CI_Telephone>
+                            <voice>
+                                <gco:CharacterString>57-1-4442060</gco:CharacterString>
+                            </voice>
+                        </CI_Telephone>
+                    </phone>
+                    <address>
+                        <CI_Address>
+                            <deliveryPoint>
+                                <gco:CharacterString>calle 20 # 5 - 44</gco:CharacterString>
+                            </deliveryPoint>
+                            <city>
+                                <gco:CharacterString>Bogotá D.C.</gco:CharacterString>
+                            </city>
+                            <administrativeArea>
+                                <gco:CharacterString>Cundinamarca</gco:CharacterString>
+                            </administrativeArea>
+                            <postalCode>
+                                <gco:CharacterString>11001</gco:CharacterString>
+                            </postalCode>
+                            <country>
+                                <Country codeList="http://www.iso.org/iso/country_codes/iso_3166_code_lists.htm" codeListValue="CO" codeSpace="ISO3166-1">CO</Country>
+                            </country>
+                            <electronicMailAddress>
+                                <gco:CharacterString>siatac@sinchi.org.co</gco:CharacterString>
+                            </electronicMailAddress>
+                        </CI_Address>
+                    </address>
+                    <onlineResource>
+                        <CI_OnlineResource>
+                            <linkage>
+                                <URL>http://sinchi.isometri.co/</URL>
+                            </linkage>
+                            <protocol>
+                                <gco:CharacterString>Dirección Web (URL-Uniforme Resource Locators)</gco:CharacterString>
+                            </protocol>
+                            <name>
+                                <gco:CharacterString>Página Instituto Sinchi</gco:CharacterString>
+                            </name>
+                            <description>
+                                <gco:CharacterString>Página web en dode se realiza la difusión de la información del Instituto Amazónico de Investigaciones Científicas - SINCHI</gco:CharacterString>
+                            </description>
+                        </CI_OnlineResource>
+                    </onlineResource>
+                    <hoursOfService>
+                        <gco:CharacterString>8:00 am a 5:00 pm</gco:CharacterString>
+                    </hoursOfService>
+                    <contactInstructions>
+                        <gco:CharacterString>Para la atención personalizada se requiere previa comunicación via correo o telefónica en el horario indicado.</gco:CharacterString>
+                    </contactInstructions>
+                </CI_Contact>
+            </contactInfo>
+            <role>
+                <CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact" codeSpace="ISOTC211/19115">pointOfContact</CI_RoleCode>
+            </role>
+        </CI_ResponsibleParty>
+    </contact>
+    <dateStamp>
+        <gco:Date>2020-05-07</gco:Date>
+    </dateStamp>
+    <metadataStandardName>
+        <gco:CharacterString>ISO 19139 Geographic Information - Metadata - Implementation Specification</gco:CharacterString>
+    </metadataStandardName>
+    <metadataStandardVersion>
+        <gco:CharacterString>2007</gco:CharacterString>
+    </metadataStandardVersion>
+    <referenceSystemInfo>
+        <MD_ReferenceSystem>
+            <referenceSystemIdentifier>
+                <RS_Identifier>
+                    <code>
+                        <gco:CharacterString>EPSG 4170</gco:CharacterString>
+                    </code>
+                </RS_Identifier>
+            </referenceSystemIdentifier>
+        </MD_ReferenceSystem>
+    </referenceSystemInfo>
+    <identificationInfo>
+        <MD_DataIdentification>
+            <citation>
+                <CI_Citation>
+                    <title>
+                        <gco:CharacterString>Cicatrices de quema por región (Histórico). Escala: 1:100.000</gco:CharacterString>
+                    </title>
+                    <date>
+                        <CI_Date>
+                            <date>
+                                <gco:Date>2020-01-15</gco:Date>
+                            </date>
+                            <dateType>
+                                <CI_DateTypeCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_DateTypeCode" codeListValue="publication" codeSpace="ISOTC211/19115">publication</CI_DateTypeCode>
+                            </dateType>
+                        </CI_Date>
+                    </date>
+                    <edition>
+                        <gco:CharacterString>Final</gco:CharacterString>
+                    </edition>
+                    <series>
+                        <CI_Series>
+                            <name>
+                                <gco:CharacterString>Cicatrices de quema por región (Histórico). Escala: 1:100.000</gco:CharacterString>
+                            </name>
+                        </CI_Series>
+                    </series>
+                </CI_Citation>
+            </citation>
+            <abstract>
+                <gco:CharacterString>Descarga aquí el metadato:https://aplicaciones.siatac.co/geonetwork/srv/spa/catalog.search#/metadata/1742d666-50c8-4573-823e-5c5189ac0bbd&amp;nbsp;Opciones de descarga:https://hub.arcgis.com/datasets/31b4f21bfb6047659d5bc2b335d99eff_0/explore&amp;nbsp;Una cicatriz de quema es la huella que deja un incendio o quema presentada sobre una porción del territorio. En la mayoría de los casos, han trasformado las coberturas presentes dejando el suelo desnudo.El proceso de generación de la capa de cicatrices por quemas en la Amazonía colombiana, desarrollada desde 2017 a escala 1:100.000, inicia con la selección y descarga de imágenes satelitales Landsat o Sentinel con baja cobertura de nubes y priorización de escenas según la concentración de puntos de calor detectados en la región amazónica.Posteriormente, mediante herramientas SIG en ArcGIS y flujos automatizados del Laboratorio de Sistemas de Información Geográfica y Sensoramiento Remoto, se procesan las imágenes para generar composiciones RGB e índices espectrales que permiten resaltar áreas afectadas por quema. A partir de estas composiciones se realiza una clasificación no supervisada para identificar las cicatrices, las cuales son verificadas visualmente, reclasificadas, vectorizadas y depuradas conforme al protocolo metodológico establecido.A partir del mes de febrero 2025 la clasificación de cicatrices de quema se realiza en la plataforma Google Earth Engine mediante el procesamiento de imágenes Sentinel-2, a partir de las cuales se construyen mosaicos regionales con reducción de nubosidad, sombras y otros datos atípicos. Sobre estos mosaicos se calculan diferentes índices espectrales de vegetación, humedad y áreas quemadas, además de composiciones en falso color que facilitan la identificación de superficies afectadas por fuego. Con apoyo de información de puntos de calor provenientes de sensores MODIS y VIIRS, se seleccionan muestras de entrenamiento para ejecutar una clasificación supervisada mediante algoritmos de Machine Learning, generando así los polígonos de cicatrices de quema en la Amazonía colombiana.La capa resultante se depura aplicando un modelo de limpieza empleando herramientas del software ArcGIS Pro para descartar polígonos que se encuentran superpuestos con cicatrices ya mapeadas en el mes anterior, como territorios artificializados y superficies de agua. Esto evita reportar cicatrices duplicadas o errores en la clasificación.La información resultante pasa por procesos de control de calidad temático y topológico, garantizando la precisión en la delimitación y clasificación de los polígonos. Luego, la capa validada se integra a la base de datos geográfica del SIATAC y se cruza con capas de bosques y coberturas de la tierra para determinar el tipo de cobertura vegetal afectada por las quemas.Finalmente, se generan estadísticas espaciales por diferentes Unidades Espaciales de Referencia, como departamentos, municipios, áreas protegidas y jurisdicciones ambientales, cuyos resultados son publicados en el portal del Sistema de Información Ambiental Territorial de la Amazonia Colombiana – SIATAC.Extensión Espacial y Temporal:Área geográfica cubierta: Amazonía Colombiana (Límites: N 4,94° / S -4,23° / E -66,85° / W -77,67°).Departamento(s): Amazonas, Caquetá, Cauca, Guaviare, Guainía, Meta, Nariño, Putumayo, Vaupés, Vichada.Temporalidad: Monitoreo mensual continuo (Desde marzo de 2017).Propósito: &amp;nbsp;Consolidar una base de datos de las cicatrices por quemas en la región de la Amazonia colombiana, mediante modelos estructurados con herramientas de sistemas de información geográfica de ESRI y Google, realizando un procesamiento digital de imágenes satelitales Landsat 8, 9 y Sentinel-2, aplicando la metodología del Instituto SINCHI, fundamentada inicialmente en los estudios del Instituto Nacional de Pesquisas Espaciales -INPE- de Brasil, propuesta por Melchori, et al. (2015) y actualizada con base en las investigaciones más recientes de Anaya et al. (2018), Montellano &amp;amp; Camargo Acre (2021) y Bastarrika et al. (2024).La capa resultante se integra mediante análisis espacial de intersección para generar la información de las cicatrices con el tipo de cobertura vegetal afectada, por cada Unidad Espacial de Referencia (UER): Grandes paisajes, Jurisdicción de Corporaciones Autónomas Regionales o de Desarrollo sostenible, Estado legal del territorio, Departamentos y Municipios.Fuentes de Datos:Instituto Amazónico de Investigaciones Científicas – SINCHI.Puntos de calor (del periodo de análisis). Generado a partir de información de sensores MODIS y VIIRS (NASA FIRMS). Programa Modelos de Funcionamiento y Sostenibilidad – Laboratorio de Sistemas de Información Geográfica y Sensoramiento Remoto.Instituto Amazónico de Investigaciones Científicas – SINCHI. Cicatrices de quema por región, del periodo inmediatamente anterior, escala 1:25.000. Programa Modelos de Funcionamiento y Sostenibilidad – Laboratorio de Sistemas de Información Geográfica y Sensoramiento Remoto.Instituto Amazónico de Investigaciones Científicas – SINCHI. Capa de Coberturas de la Tierra a Escala 1:100.000 (última versión disponible del último año generado para el periodo de análisis). Programa Modelos de Funcionamiento y Sostenibilidad – Laboratorio de Sistemas de Información Geográfica y Sensoramiento Remoto.Instituto Amazónico de Investigaciones Científicas – SINCHI. Capa de Bosque no Bosque. Escala 1:25.000. (última versión disponible del último año generado para el periodo de análisis). &amp;nbsp;Programa Modelos de Funcionamiento y Sostenibilidad – Laboratorio de Sistemas de Información Geográfica y Sensoramiento Remoto.Instituto Amazónico de Investigaciones Científicas – SINCHI. Capa de jurisdicción de Corporaciones Autónomas Regionales y de Desarrollo Sostenible, (última versión disponible del último año generado para el periodo de análisis). Programa Modelos de Funcionamiento y Sostenibilidad – Laboratorio de Sistemas de Información Geográfica y Sensoramiento Remoto.Instituto Amazónico de Investigaciones Científicas – SINCHI. Capa de municipios en la Amazonia colombiana (última versión disponible del último año generado para el periodo de análisis). Programa Modelos de Funcionamiento y Sostenibilidad – Laboratorio de Sistemas de Información Geográfica y Sensoramiento Remoto.Instituto Amazónico de Investigaciones Científicas – SINCHI. Capa de departamentos en la Amazonia colombiana, (última versión disponible del último año generado para el periodo de análisis). Programa Modelos de Funcionamiento y Sostenibilidad – Laboratorio de Sistemas de Información Geográfica y Sensoramiento Remoto.Instituto Amazónico de Investigaciones Científicas – SINCHI. Capa de grandes paisajes, (última versión disponible del último año generado para el periodo de análisis). Programa Modelos de Funcionamiento y Sostenibilidad – Laboratorio de Sistemas de Información Geográfica y Sensoramiento Remoto.Copernicus Programme – Agencia Espacial Europea (ESA). Imágenes satelitales Sentinel-2A de 10 m de resolución espacial correspondientes a los tiles 18MVE, 18MWE, 18NTF, 18NTG, 18NUF, 18NUG, 18NUH, 18NVF, 18NVG, 18NVH, 18NVJ, 18NWF, 18NWG, 18NWH, 18NWJ, 18NXG, 18NXH, 18NXJ, 18NYG, 18NYH, 18NYJ, 18NZG, 18NZH, 18NZJ, 18NZK, 19NBC, 19NBD, 19NBE, 19NCA, 19NCB, 19NCC, 19NCD, 19NCE, 19NDB, 19NDC, 19NDD, 19NDE, 19NEC, 19NED, 19NEE, 19NEF, 19NFD, 19NFE, 19NFF y 19NGB, adquiridos para el periodo de análisis, utilizadas como insumo para la generación de información geográfica por el Instituto Amazónico de Investigaciones Científicas – SINCHI, Programa Modelos de Funcionamiento y Sostenibilidad – Laboratorio de Sistemas de Información Geográfica y Sensoramiento Remoto.U.S. Geological Survey (USGS) – National Aeronautics and Space Administration (NASA). Imágenes satelitales Landsat 8 y Landsat 9 de 30 m de resolución espacial correspondientes a los Path/Row 4-57, 4-58, 4-59, 4-60, 4-61, 4-62, 4-63, 9-59, 9-60, 7-58, 7-59, 7-60, 7-61, 5-57, 5-58, 5-59, 5-60, 5-61, 5-62, 3-57, 3-58, 3-59, 8-58, 8-59, 8-60, 6-57, 6-58, 6-59, 6-60, 6-61 y 6-62, adquiridos para el periodo de análisis, utilizadas como insumo para la generación de información geográfica por el Instituto Amazónico de Investigaciones Científicas – SINCHI, Programa Modelos de Funcionamiento y Sostenibilidad – Laboratorio de Sistemas de Información Geográfica y Sensoramiento Remoto.Diccionario de datos:OBJECTID: Identificador único de la tabla, asignado por el sistemaMes: Corresponde al mes de identificación o registro de la cicatriz de quemaFecha de registro: Corresponde al día/mes/año de publicación de la cicatriz de quemaPath row: Ubicación específica de una escena satelitalCategoría: Corresponde a la cobertura de la tierra que se identificó previo a la cicatriz se clasifican en tipo: bosque, vegetación secundaria y otras coberturasÁrea (hectáreas): Corresponde al área en hectáreas de la unidad seleccionadaCantidad de polígonos: Corresponde al número total de polígonos o fragmentos individuales detectados que conforman la cicatriz de quemaPeriodo: Indica el año de la toma del registro o del análisis de la quemaPeriodo mes: Formato combinado de año y mes (AAAA-MM) que representa la temporalidad exacta del evento.Área (kilometros): Corresponde al área en kilómetros cuadrados de la unidad seleccionadaSigla CAR: Acrónimo de la Corporación Autónoma Regional que tiene jurisdicción ambiental sobre el territorio afectadoDepartamento: Nombre del departamento político-administrativo donde ocurre el eventoMunicipio: Nombre del municipio donde ocurre el eventoEstado legal: Categoría de ordenamiento jurídico o tipo de figura de protección del suelo afectadoPaisaje: Descripción de la macro-unidad fisiográfica o tipo de relieve característico de la zonaFuente:Modelos de Funcionamiento y Sostenibilidad del Laboratorio SIG y SRBogotá D.C., Colombia&amp;nbsp;siatac.coCalle 20 # 5 - 44Código Postal: 110311&amp;nbsp;Teléfono: +57 (1) 4442060Horario de atención: 8:00 am - 5:00 pm de Lunes a Viernes&amp;nbsp;&amp;nbsp;Información de contacto:Establecer previo contacto telefónico o a través de correo electrónico, para realizar la solicitud o fijar una cita en el horario de atención.</gco:CharacterString>
+            </abstract>
+            <purpose>
+                <gco:CharacterString>Corresponde a la capa de cicatrices por quemas en la Amazonía colombiana, generada mediante monitoreo mensual continuo desde marzo de 2017 hasta la actualidad, a escala 1:100.000. Representa de manera estructurada las áreas afectadas por eventos de quema en la Amazonia colombiana, identificadas mediante el análisis multitemporal de imágenes satelitales LandSat y Sentinel. Su estructura está compuesta por polígonos vectoriales que delimitan las cicatrices, y cada entidad incluye atributos que permiten identificar su ubicación, fecha de detección, superficie afectada y cobertura anterior al evento.</gco:CharacterString>
+            </purpose>
+            <credit>
+                <gco:CharacterString>Instituto Amazónico de Investigaciones Científicas - SINCHI. Programa Modelos de Funcionamiento y Sostenibilidad – Laboratorio de Sistemas de Información Geográfica y Sensoramiento Remoto.</gco:CharacterString>
+            </credit>
+            <pointOfContact>
+                <CI_ResponsibleParty>
+                    <individualName>
+                        <gco:CharacterString>Modelos de Funcionamiento y Sostenibilidad del Laboratorio SIG y SR.</gco:CharacterString>
+                    </individualName>
+                    <organisationName>
+                        <gco:CharacterString>Instituto Amazónico de Investigaciones Científicas - SINCHI</gco:CharacterString>
+                    </organisationName>
+                    <positionName>
+                        <gco:CharacterString>Coordinador programa de investigación modelos de funcionamiento</gco:CharacterString>
+                    </positionName>
+                    <contactInfo>
+                        <CI_Contact>
+                            <phone>
+                                <CI_Telephone>
+                                    <voice>
+                                        <gco:CharacterString>57-1-4442060</gco:CharacterString>
+                                    </voice>
+                                </CI_Telephone>
+                            </phone>
+                            <address>
+                                <CI_Address>
+                                    <deliveryPoint>
+                                        <gco:CharacterString>Calle 20 # 5 - 44</gco:CharacterString>
+                                    </deliveryPoint>
+                                    <city>
+                                        <gco:CharacterString>Bogotá D.C.</gco:CharacterString>
+                                    </city>
+                                    <administrativeArea>
+                                        <gco:CharacterString>Cundinamarca</gco:CharacterString>
+                                    </administrativeArea>
+                                    <postalCode>
+                                        <gco:CharacterString>11001</gco:CharacterString>
+                                    </postalCode>
+                                    <country>
+                                        <Country codeList="http://www.iso.org/iso/country_codes/iso_3166_code_lists.htm" codeListValue="CO" codeSpace="ISO3166-1">CO</Country>
+                                    </country>
+                                    <electronicMailAddress>
+                                        <gco:CharacterString>siatac@sinchi.org.co</gco:CharacterString>
+                                    </electronicMailAddress>
+                                </CI_Address>
+                            </address>
+                            <onlineResource>
+                                <CI_OnlineResource>
+                                    <linkage>
+                                        <URL>http://sinchi.isometri.co/</URL>
+                                    </linkage>
+                                    <protocol>
+                                        <gco:CharacterString>Dirección Web (URL-Uniforme Resource Locators)</gco:CharacterString>
+                                    </protocol>
+                                    <name>
+                                        <gco:CharacterString>Página Instituto Sinchi</gco:CharacterString>
+                                    </name>
+                                    <description>
+                                        <gco:CharacterString>Página web en donde se realiza la difusión de la información del Instituto Amazónico de Investigaciones Científicas - SINCHI</gco:CharacterString>
+                                    </description>
+                                </CI_OnlineResource>
+                            </onlineResource>
+                            <hoursOfService>
+                                <gco:CharacterString>8:00 am a 5:00 pm</gco:CharacterString>
+                            </hoursOfService>
+                            <contactInstructions>
+                                <gco:CharacterString>Para la atención personalizada se requiere previa comunicación vía correo o telefónica en el horario indicado.</gco:CharacterString>
+                            </contactInstructions>
+                        </CI_Contact>
+                    </contactInfo>
+                    <role>
+                        <CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact" codeSpace="ISOTC211/19115">pointOfContact</CI_RoleCode>
+                    </role>
+                </CI_ResponsibleParty>
+            </pointOfContact>
+            <descriptiveKeywords>
+                <MD_Keywords>
+                    <keyword>
+                        <gco:CharacterString>2020</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Tema</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Cicatrices de quema</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>100K</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>2019</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Region</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>Monitoreo Ambiental</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>2017</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>2018</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>2021</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>2022</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>2023</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>2024</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>2025</gco:CharacterString>
+                    </keyword>
+                    <keyword>
+                        <gco:CharacterString>2026</gco:CharacterString>
+                    </keyword>
+                </MD_Keywords>
+            </descriptiveKeywords>
+            <resourceConstraints>
+                <MD_Constraints>
+                    <useLimitation>
+                        <gco:CharacterString>This work is licensed under a Creative Commons Attribution 4.0 International License.</gco:CharacterString>
+                    </useLimitation>
+                </MD_Constraints>
+            </resourceConstraints>
+            <resourceConstraints>
+                <MD_LegalConstraints>
+                    <otherConstraints>
+                        <gco:CharacterString>De acuerdo con la licencia del uso de la información.</gco:CharacterString>
+                    </otherConstraints>
+                </MD_LegalConstraints>
+            </resourceConstraints>
+            <resourceConstraints>
+                <MD_SecurityConstraints>
+                    <classification gco:nilReason="missing"/>
+                    <userNote>
+                        <gco:CharacterString>Todo el contenido en este conjunto de datos está protegido por derechos de autor, marcas registradas y/o derechos de propiedad intelectual.</gco:CharacterString>
+                    </userNote>
+                </MD_SecurityConstraints>
+            </resourceConstraints>
+            <language gco:nilReason="missing"/>
+            <characterSet>
+                <MD_CharacterSetCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#MD_CharacterSetCode" codeListValue="utf8" codeSpace="ISOTC211/19115">utf8</MD_CharacterSetCode>
+            </characterSet>
+            <extent>
+                <EX_Extent>
+                    <description>
+                        <gco:CharacterString>La zona de estudio es la amazonia colombiana, cuyo límite oficial corresponde al definido por el Instituto SINCHI.</gco:CharacterString>
+                    </description>
+                    <geographicElement>
+                        <EX_GeographicBoundingBox>
+                            <westBoundLongitude>
+                                <gco:Decimal>-78.881</gco:Decimal>
+                            </westBoundLongitude>
+                            <eastBoundLongitude>
+                                <gco:Decimal>-66.621</gco:Decimal>
+                            </eastBoundLongitude>
+                            <southBoundLatitude>
+                                <gco:Decimal>-4.71</gco:Decimal>
+                            </southBoundLatitude>
+                            <northBoundLatitude>
+                                <gco:Decimal>3</gco:Decimal>
+                            </northBoundLatitude>
+                        </EX_GeographicBoundingBox>
+                    </geographicElement>
+                </EX_Extent>
+            </extent>
+        </MD_DataIdentification>
+    </identificationInfo>
+    <contentInfo>
+        <MD_ImageDescription>
+            <attributeDescription>
+                <gco:RecordType>Descripción del atributo por el valor de medición</gco:RecordType>
+            </attributeDescription>
+            <contentType gco:nilReason="missing"/>
+        </MD_ImageDescription>
+    </contentInfo>
+    <contentInfo>
+        <MD_CoverageDescription>
+            <attributeDescription>
+                <gco:RecordType>Descripción del atributo por el valor de medición</gco:RecordType>
+            </attributeDescription>
+            <contentType gco:nilReason="missing"/>
+        </MD_CoverageDescription>
+    </contentInfo>
+    <contentInfo>
+        <MD_FeatureCatalogueDescription>
+            <includedWithDataset>
+                <gco:Boolean>true</gco:Boolean>
+            </includedWithDataset>
+            <featureCatalogueCitation gco:nilReason="missing"/>
+        </MD_FeatureCatalogueDescription>
+    </contentInfo>
+    <distributionInfo>
+        <MD_Distribution>
+            <distributor>
+                <MD_Distributor>
+                    <distributorContact>
+                        <CI_ResponsibleParty>
+                            <individualName>
+                                <gco:CharacterString>Modelos de Funcionamiento y Sostenibilidad del Laboratorio SIG y SR.</gco:CharacterString>
+                            </individualName>
+                            <organisationName>
+                                <gco:CharacterString>Instituto Amazónico de Investigaciones Científicas - SINCHI</gco:CharacterString>
+                            </organisationName>
+                            <positionName>
+                                <gco:CharacterString>Coordinación</gco:CharacterString>
+                            </positionName>
+                            <contactInfo>
+                                <CI_Contact>
+                                    <phone>
+                                        <CI_Telephone>
+                                            <voice>
+                                                <gco:CharacterString>57-1-4442060</gco:CharacterString>
+                                            </voice>
+                                        </CI_Telephone>
+                                    </phone>
+                                    <address>
+                                        <CI_Address>
+                                            <deliveryPoint>
+                                                <gco:CharacterString>Calle 20 No. 5-44</gco:CharacterString>
+                                            </deliveryPoint>
+                                            <city>
+                                                <gco:CharacterString>Bogotá</gco:CharacterString>
+                                            </city>
+                                            <administrativeArea>
+                                                <gco:CharacterString>Cundinamarca</gco:CharacterString>
+                                            </administrativeArea>
+                                            <postalCode>
+                                                <gco:CharacterString>11001</gco:CharacterString>
+                                            </postalCode>
+                                            <country>
+                                                <Country codeList="http://www.iso.org/iso/country_codes/iso_3166_code_lists.htm" codeListValue="CO" codeSpace="ISO3166-1">CO</Country>
+                                            </country>
+                                            <electronicMailAddress>
+                                                <gco:CharacterString>siatac@sinchi.org.co</gco:CharacterString>
+                                            </electronicMailAddress>
+                                        </CI_Address>
+                                    </address>
+                                    <hoursOfService>
+                                        <gco:CharacterString>8:00 am a 5:00 pm</gco:CharacterString>
+                                    </hoursOfService>
+                                    <contactInstructions>
+                                        <gco:CharacterString>Para la atención personalizada se requiere previa comunicación vía correo o telefónica en el horario indicado.</gco:CharacterString>
+                                    </contactInstructions>
+                                </CI_Contact>
+                            </contactInfo>
+                            <role>
+                                <CI_RoleCode codeList="http://www.isotc211.org/2005/resources/Codelist/gmxCodelists.xml#CI_RoleCode" codeListValue="pointOfContact" codeSpace="ISOTC211/19115">pointOfContact</CI_RoleCode>
+                            </role>
+                        </CI_ResponsibleParty>
+                    </distributorContact>
+                    <distributionOrderProcess>
+                        <MD_StandardOrderProcess>
+                            <fees>
+                                <gco:CharacterString>No aplica</gco:CharacterString>
+                            </fees>
+                            <plannedAvailableDateTime>
+                                <gco:DateTime>2020-01-15T00:00:00</gco:DateTime>
+                            </plannedAvailableDateTime>
+                            <orderingInstructions>
+                                <gco:CharacterString>En caso de que los datos no estén disponibles en el portal del SIAT-AC, se debe comunicar con el programa de Modelos de Funcionamiento y Sostenibilidad.</gco:CharacterString>
+                            </orderingInstructions>
+                        </MD_StandardOrderProcess>
+                    </distributionOrderProcess>
+                </MD_Distributor>
+            </distributor>
+            <transferOptions>
+                <MD_DigitalTransferOptions>
+                    <onLine>
+                        <CI_OnlineResource>
+                            <linkage>
+                                <URL>https://opendata.arcgis.com/datasets/31b4f21bfb6047659d5bc2b335d99eff_0.zip</URL>
+                            </linkage>
+                            <protocol>
+                                <gco:CharacterString>Dirección Web (URL-Uniforme Resource Locators)</gco:CharacterString>
+                            </protocol>
+                            <name>
+                                <gco:CharacterString>Sistema de Información Ambiental Territorial de la Amazonia colombiana</gco:CharacterString>
+                            </name>
+                            <description>
+                                <gco:CharacterString>Descripción del portal donde se pueden encontrar los datos</gco:CharacterString>
+                            </description>
+                        </CI_OnlineResource>
+                    </onLine>
+                </MD_DigitalTransferOptions>
+            </transferOptions>
+        </MD_Distribution>
+    </distributionInfo>
+    <dataQualityInfo>
+        <DQ_DataQuality>
+            <scope gco:nilReason="missing"/>
+            <report>
+                <DQ_QuantitativeAttributeAccuracy>
+                    <result gco:nilReason="missing"/>
+                </DQ_QuantitativeAttributeAccuracy>
+            </report>
+            <lineage>
+                <LI_Lineage>
+                    <statement>
+                        <gco:CharacterString>Explicación del proceso productivo de los datos.</gco:CharacterString>
+                    </statement>
+                    <processStep>
+                        <LI_ProcessStep>
+                            <description>
+                                <gco:CharacterString>Descripción de la secuencia de procesos que se le aplicó a los datos fuente.</gco:CharacterString>
+                            </description>
+                        </LI_ProcessStep>
+                    </processStep>
+                </LI_Lineage>
+            </lineage>
+        </DQ_DataQuality>
+    </dataQualityInfo>
+</MD_Metadata>

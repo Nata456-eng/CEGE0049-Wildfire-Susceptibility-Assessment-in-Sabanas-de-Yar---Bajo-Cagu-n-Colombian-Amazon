@@ -1,9 +1,9 @@
 """
-Genera las 3 graficas de desempeno v4 (LR, RF, XGBoost): AUC-ROC, PR-AUC y F1,
-comparando validacion espacial vs. temporal. Lee v4_model_comparison_metrics.csv
-(anillo 7-15 km, ratio 1:1) y guarda un PNG por metrica en esta misma carpeta.
+Generates the 3 v4 performance charts (LR, RF, XGBoost): AUC-ROC, PR-AUC and F1,
+comparing spatial vs. temporal validation. Reads v4_model_comparison_metrics.csv
+(7-15 km ring, ratio 1:1) and saves one PNG per metric in this same folder.
 
-Re-ejecutar tras cualquier cambio en v4_model_comparison_metrics.csv:
+Re-run after any change to v4_model_comparison_metrics.csv:
     "C:\\Users\\Natal\\.conda\\envs\\fire_thesis\\python.exe" generate_v4_metric_charts.py
 """
 
@@ -15,9 +15,9 @@ import pandas as pd
 HERE = Path(__file__).parent
 METRICS_CSV = HERE.parent / "v4_buffer_7_15km" / "v4_model_comparison_metrics.csv"
 
-# Paleta categorica validada (skill dataviz): slot 1 = azul, slot 2 = naranja.
-# El color codifica el TIPO de validacion (espacial vs. temporal), fijo en
-# las 3 graficas -- no el modelo, que va como etiqueta en el eje x.
+# Validated categorical palette (dataviz skill): slot 1 = blue, slot 2 = orange.
+# Color encodes the validation TYPE (spatial vs. temporal), fixed across the
+# 3 charts -- not the model, which goes as the x-axis label.
 COLOR_SPATIAL = "#2a78d6"
 COLOR_TEMPORAL = "#eb6834"
 INK_PRIMARY = "#0b0b0b"
@@ -29,7 +29,7 @@ SURFACE = "#fcfcfb"
 
 MODEL_ORDER = ["Logistic Regression", "Random Forest", "XGBoost"]
 MODEL_LABELS = {
-    "Logistic Regression": "Regresión\nLogística",
+    "Logistic Regression": "Logistic\nRegression",
     "Random Forest": "Random\nForest",
     "XGBoost": "XGBoost",
 }
@@ -37,20 +37,20 @@ MODEL_LABELS = {
 METRICS = [
     {
         "key": "roc_auc",
-        "title": "AUC-ROC — v4 (anillo 7–15 km, ratio 1:1)",
-        "subtitle": "Qué tan bien separa el modelo pixeles quemados de no quemados (0.5 = azar, 1.0 = perfecto)",
+        "title": "AUC-ROC — v4 (Buffer ring 7–15 km, ratio 1:1)",
+        "subtitle": "How good is the model to separate burned from unburned pixels (0.5 = random, 1.0 = perfect)",
         "filename": "v4_auc_roc_comparison.png",
     },
     {
         "key": "pr_auc",
-        "title": "PR-AUC — v4 (anillo 7–15 km, ratio 1:1)",
-        "subtitle": "Precisión-Recall; línea base = prevalencia de la clase positiva (0.5 en el dataset balanceado 1:1)",
+        "title": "PR-AUC — v4 (Buffer ring 7–15 km, ratio 1:1)",
+        "subtitle": "Precision-Recall; baseline = positive class prevalence (0.5 in the balanced 1:1 dataset)",
         "filename": "v4_pr_auc_comparison.png",
     },
     {
         "key": "f1_at_0.5",
-        "title": "F1 (umbral 0.5) — v4 (anillo 7–15 km, ratio 1:1)",
-        "subtitle": "Balance entre precisión y sensibilidad, con umbral de decisión fijo en 0.5",
+        "title": "F1 (threshold 0.5) — v4 (Buffer ring 7–15 km, ratio 1:1)",
+        "subtitle": "Balance between precision and recall, with decision threshold fixed at 0.5",
         "filename": "v4_f1_comparison.png",
     },
 ]
@@ -87,14 +87,14 @@ def plot_metric(df: pd.DataFrame, spec: dict) -> None:
         x_spatial, spatial_vals, width=BAR_WIDTH, color=COLOR_SPATIAL,
         yerr=spatial_err, capsize=3,
         error_kw={"ecolor": INK_SECONDARY, "elinewidth": 1, "capthick": 1},
-        label="Espacial (5 folds)", zorder=3,
+        label="Spatial (5 folds)", zorder=3,
     )
     ax.bar(
         x_temporal, temporal_vals, width=BAR_WIDTH, color=COLOR_TEMPORAL,
         label="Temporal (holdout)", zorder=3,
     )
 
-    # Etiquetas de valor directo sobre cada barra (por encima de la barra de error).
+    # Direct value labels above each bar (above the error bar, if any).
     spatial_err_for_label = spatial_err if spatial_err is not None else [0] * len(spatial_vals)
     for xi, v, e in zip(x_spatial, spatial_vals, spatial_err_for_label):
         ax.text(xi, v + e + 0.022, f"{v:.3f}", ha="center", va="bottom",
@@ -129,7 +129,7 @@ def plot_metric(df: pd.DataFrame, spec: dict) -> None:
     out_path = HERE / spec["filename"]
     fig.savefig(out_path, facecolor=SURFACE, bbox_inches="tight")
     plt.close(fig)
-    print(f"Guardado: {out_path}")
+    print(f"Saved: {out_path}")
 
 
 def main() -> None:
